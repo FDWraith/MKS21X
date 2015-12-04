@@ -1,0 +1,12 @@
+To initialize a new repo:
+   git init <name>
+To clone a repo:
+   git clone <url>
+To add a file to the staging area:
+   git add <filename1> [ <filename2> <filename3> ... ]
+To commit a change:
+   git commit [-m <String message>]
+To get the list of commits:
+   git log
+To rollback in the log:
+   
