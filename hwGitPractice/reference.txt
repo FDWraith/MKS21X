@@ -8,5 +8,16 @@ To commit a change:
    git commit [-m <String message>]
 To get the list of commits:
    git log
-To rollback in the log:
-   
+To get the status of the staging area:
+   git status
+To remove a file from the staging area:
+   git reset HEAD <filename>
+To find the difference between a file in the working dir and the staging area:
+   git diff <filename>
+To show the most recent commit:
+   git show HEAD
+To rollback to most recent commit:
+   git checkout HEAD <filename>
+To rollback to an earlier commit:
+   git reset SHA (first seven digits of the commit code)
+
