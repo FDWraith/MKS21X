@@ -20,4 +20,4 @@ To rollback to most recent commit:
    git checkout HEAD <filename>
 To rollback to an earlier commit:
    git reset SHA (first seven digits of the commit code)
-
+  
