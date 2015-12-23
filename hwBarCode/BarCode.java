@@ -11,29 +11,32 @@ public class BarCode implements Comparable{
 							":||::", //6
 							"|:::|", //7
 							"|::|:", //8
-							"|:|::" }//9
+							"|:|::"};//9
 
     public BarCode(String zip){
 	if(!(check(zip))){
-	    throw(RunTimeException e);
+	    throw new RuntimeException();
 	}
 	_zip = zip;
+	bars = "";
 	int sum = 0;
+	int num;
 	for(int i=0;i<zip.length();i++){
-	    sum += Integer.parseInt(zip.substring(i,i+1));
-	    bars += barCodeIdentifier
+	    num = Integer.parseInt(zip.substring(i,i+1));
+	    sum += num;
+	    bars += barCodeIdentifier[num];
 	}
 	checkDigit = sum % 10;
     }
 
-    public BarCode(Barcode o){
+    public BarCode(BarCode o){
 	this._zip = o._zip;
 	this.checkDigit = o.checkDigit; 
 	this.bars = o.bars;
     }
     
     public String toString(){
-	return "|"+bars+"|";
+	return computeNum()+" |"+bars+"|";
     }
 
 
@@ -42,11 +45,28 @@ public class BarCode implements Comparable{
 	    return false;
 	}
 	for(int i=0; i<zip.length();i++){
-	    if(!(zip.charAt(i).isDigit())){
+	    if(!(Character.isDigit(zip.charAt(i)))){
 		return false;
 	    }
 	}
 	return true;
+    }
+
+    public int computeNum(){
+	int sum = 0;
+	for(int i=0;i<_zip.length();i++){
+	    sum += Integer.parseInt(_zip.substring(i,i+1)) * (Math.pow(10,_zip.length()-i));
+	}
+	return sum += checkDigit;
+	
+    }
+
+    
+    public int compareTo(Object other){
+	if(other instanceof BarCode){
+	    return (this.computeNum() - (((BarCode)(other)).computeNum()));
+	}
+	return 0;
     }
 
 }
