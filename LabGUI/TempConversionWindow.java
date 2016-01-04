@@ -90,10 +90,10 @@ public class TempConversionWindow extends JFrame implements ActionListener{
 	}
 	double input = Double.parseDouble(t.getText());
 	if(event.equals("From Fahrenheit")){
-	    l2.setText(Math.round(FtoC(input)*100)/100+" C");
+	    l2.setText(Math.round(FtoC(input)*100.0)/100.0+" C");
 	}
 	if(event.equals("From Celcius")){
-	    l2.setText(Math.round(CtoF(input)*100)/100+" F");
+	    l2.setText(Math.round(CtoF(input)*100.0)/100.0+" F");
 	}
     }
 
